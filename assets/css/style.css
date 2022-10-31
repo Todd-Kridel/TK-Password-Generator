@@ -1,3 +1,4 @@
+/* global variables */
 :root {
   --main-page-background-color: #fbfcfd;
   --main-page-background-offset-color: #f8f8f8;
@@ -6,12 +7,14 @@
   --main-border-color-light-light-gray: rgb(224, 224, 224);
 }
 
+/* default style items */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* main page basic styling */
 html,
 body,
 .wrapper {
@@ -24,18 +27,21 @@ body {
   font-family: sans-serif, Arial;
 }
 
+/* standard heading */
 h1 {
   font-size: 35px;
   font-weight: bold;
   color: var(--main-text-color-dark-gray);
 }
 
+/* standard heading */
 h2 {
   font-size: 25px;
   font-weight: bold;
   color: var(--main-text-color-dark-gray);
 }
 
+/* special overall page box layout */
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
@@ -52,8 +58,9 @@ header {
   padding-top: 0px;
 }
 
+/* central area of focus that includes highlight bordering and the primary text generation and functional area */
 .card {
-  background-color: var(--main-page-background-color); /* originally hsl(0, 0%, 100%) */
+  background-color: var(--main-page-background-color);
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -93,7 +100,7 @@ header {
   clear: both;
 }
 
-.generate_button {
+.generate_button {  /*a custom-styled function button that is the primary usage of the page for input and data validation and display output */
   border: none;
   background-color: rgb(179, 13, 13);
   border-radius: 25px;
@@ -118,7 +125,7 @@ button[disabled] {
   float: right;
 }
 
-#password {
+#password {  /* the main processing textarea section */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
