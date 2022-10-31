@@ -131,15 +131,15 @@ function generate_password() {
   else {
     generated_password = "";
   }
-}
-// Display a password_processing status message before displaying the generated password.
-// Or/And display some error status information if applicable...especially if a password could not be generated.
-window.alert(password_processing);
-generated_password = generated_password + "\n" + error_processing;
-display_password(generated_password);
-//
-function generate_random_number(passed_range_number) {
-  return Math.floor(Math.random() * passed_range_number);
+  // Display a password_processing status message before displaying the generated password.
+  // Or/And display some error status information if applicable...especially if a password could not be generated.
+  window.alert(password_processing);
+  generated_password = generated_password + "\n" + error_processing;
+  display_password(generated_password);
+  //
+  function generate_random_number(passed_range_number) {
+    return Math.floor(Math.random() * passed_range_number);
+  }
 }
 
 
