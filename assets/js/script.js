@@ -92,9 +92,9 @@ function generate_password() {
       }  // For the next inner loop...custom-set the advanced slider starting position to prevent re-processing of data.
     //
     // Initialize the password processing variables.
-    var random_index_of_selected_character_array = null;
+    var random_index_of_selected_character_array = "";
     var random_selected_array = "";
-    var random_index_of_character_in_array = null;
+    var random_index_of_character_in_array = "";
     var random_selected_character = "";
     var password_processing_loop_character_concatenation = "";
     var generated_password = "";
@@ -162,7 +162,7 @@ function prompt_for_password_criteria() {
   var user_response_errors = "";
   var should_re_start_prompting = false;
   password_processing = "";
-
+  error_processing = "";
   //
   user_response = prompt("What character length (8 to 128) do you want for your password?");
   // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID

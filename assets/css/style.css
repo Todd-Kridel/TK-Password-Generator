@@ -146,6 +146,8 @@ button[disabled] {
   overflow: auto;
 }
 
+/* media queries for responsiveness */
+
 @media (max-width: 690px) {
   .generate_button {
     font-size: 1rem;
