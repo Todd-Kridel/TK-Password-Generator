@@ -158,6 +158,11 @@ function prompt_for_password_criteria() {
   var user_response = "";
   var user_response_errors = "";
   var should_re_start_prompting = false;
+  password_length = 0;
+  include_password_numbers = false;
+  include_password_letters_lowercase = false;
+  include_password_letters_uppercase = false;
+  include_password_characters_special = false;
   enough_criteria_responses_are_valid = false;
   password_processing = "";
   error_processing = "";
