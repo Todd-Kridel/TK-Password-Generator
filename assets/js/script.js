@@ -75,7 +75,6 @@ function generate_password() {
       selected_character_arrays[4] = "YES";
       amount_of_selected_character_types = amount_of_selected_character_types + 1;
     }
-
     // Identify the sequence numbers of the possible character arrays/lists that are selected by the user for the new password.
     // The sequence numbers of the selected arrays will allow for the indexes of the arrays to be identified and processed.
     last_processed_list_number = 0; // the first-pass initialization for a sliding progressive starting index
@@ -106,7 +105,6 @@ function generate_password() {
       password_length_loop_index = password_length_loop_index + 1) {
       // For each to-be-generated password character...first randomly pick a user-selected character array.
       // Then randomly select a character from that array.
-
 	  random_index_of_selected_character_array = selected_character_arrays_indexes[generate_random_number(amount_of_selected_character_types) + 1];
       //
       if (random_index_of_selected_character_array == 1) {
@@ -121,7 +119,6 @@ function generate_password() {
       if (random_index_of_selected_character_array == 4) {
         random_selected_array = possible_password_characters_special;
       }
-
       random_selected_array_length = random_selected_array.length;
       random_index_of_character_in_array = generate_random_number(random_selected_array_length);
       random_selected_character = random_selected_array[random_index_of_character_in_array];
