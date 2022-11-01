@@ -161,6 +161,7 @@ function prompt_for_password_criteria() {
   var user_response = "";
   var user_response_errors = "";
   var should_re_start_prompting = false;
+  enough_criteria_responses_are_valid = false;
   password_processing = "";
   error_processing = "";
   //
@@ -290,12 +291,8 @@ function prompt_for_password_criteria() {
     user_response_errors = user_response_errors + "\n" + 
       "ERROR: A minimum of 1 type of include-character (number, letter, special) must be specified.";
     }
-  else {
-    should_re_start_prompting = false;
-    enough_criteria_responses_are_valid = true;
-  }
   //
-  if (((should_re_start_prompting == "*CANCEL*") || (should_re_start_prompting == false)) && (enough_criteria_responses_are_valid == true)) {
+  if (/*((should_re_start_prompting == "*CANCEL*") || (should_re_start_prompting == false)) &&*/ (enough_criteria_responses_are_valid == true)) {
     // The criteria response data is good and a password can be generated.
     password_processing = password_processing + "\n" + 
       "The criteria response data is good (or good-enough) and a password (of at least 1 character type) can be generated.";
