@@ -1,3 +1,4 @@
+
 // [ User Story ]
 // AS AN employee with access to sensitive data
 // I WANT to randomly generate a password that meets certain criteria
@@ -5,15 +6,14 @@
 //
 // Assignment code
 
-
 var password_length = 0;
 var include_password_numbers = false;
 var include_password_letters_lowercase = false;
 var include_password_letters_uppercase = false;
 var include_password_characters_special = false;
 var enough_criteria_responses_are_valid = false;
-var password_processing = "";
 var error_processing = "";
+var password_processing = "";
 //
 // [ Acceptance Criteria ]
 // GIVEN I need a new, secure password...
@@ -75,9 +75,10 @@ function generate_password() {
       selected_character_arrays[4] = "YES";
       amount_of_selected_character_types = amount_of_selected_character_types + 1;
     }
+
     // Identify the sequence numbers of the possible character arrays/lists that are selected by the user for the new password.
     // The sequence numbers of the selected arrays will allow for the indexes of the arrays to be identified and processed.
-    last_processed_list_number = 1; // the first-pass initialization for a sliding progressive starting index
+    last_processed_list_number = 0; // the first-pass initialization for a sliding progressive starting index
     for (selection_array_list_indexes_loop = 1; selection_array_list_indexes_loop <= amount_of_selected_character_types; 
       selection_array_list_indexes_loop = selection_array_list_indexes_loop + 1) {
       for (selection_array_list_number_loop = (last_processed_list_number + 1); selection_array_list_number_loop <= amount_of_possible_character_arrays; 
@@ -105,7 +106,8 @@ function generate_password() {
       password_length_loop_index = password_length_loop_index + 1) {
       // For each to-be-generated password character...first randomly pick a user-selected character array.
       // Then randomly select a character from that array.
-      random_index_of_selected_character_array = generate_random_number(amount_of_selected_character_types);
+
+	  random_index_of_selected_character_array = selected_character_arrays_indexes[generate_random_number(amount_of_selected_character_types) + 1];
       //
       if (random_index_of_selected_character_array == 1) {
         random_selected_array = possible_password_characters_numbers;
@@ -119,6 +121,7 @@ function generate_password() {
       if (random_index_of_selected_character_array == 4) {
         random_selected_array = possible_password_characters_special;
       }
+
       random_selected_array_length = random_selected_array.length;
       random_index_of_character_in_array = generate_random_number(random_selected_array_length);
       random_selected_character = random_selected_array[random_index_of_character_in_array];
@@ -158,16 +161,20 @@ function prompt_for_password_criteria() {
   var user_response = "";
   var user_response_errors = "";
   var should_re_start_prompting = false;
+  password_processing = "";
+
   //
   user_response = prompt("What character length (8 to 128) do you want for your password?");
   // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
+
+  user_response_int = parseInt(user_response);
   if (user_response == null) {  // The user selected the Cancel button to exit the application.
     should_re_start_prompting = "*CANCEL*";
     password_processing = password_processing + "\n" + "*CANCELLED*";
     user_response_errors = user_response_errors + "\n" + "*CANCELLED*";
   }
-  else if (Number.isInteger(user_response) && ((user_response >= 8) && (user_response <= 128))) {
-    password_length = user_response;
+  else if ((user_response_int != NaN) && ((user_response_int >= 8) && (user_response_int <= 128))) {
+    password_length = user_response_int;
   }
   else {  // not a valid/integer number entry or not a number entry
     password_length = "0";
@@ -178,7 +185,7 @@ function prompt_for_password_criteria() {
   user_response = "";
   //
   if ((should_re_start_prompting != "*CANCEL*") && (should_re_start_prompting == false)) {
-    user_response = prompt("Do you want for numbers to be used in your password (Y/Yes or N/No?");
+    user_response = prompt("Do you want for numbers to be used in your password (Y/Yes or N/No)?");
     // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
     if (user_response == null) {  // The user selected the Cancel button to exit the application.
       should_re_start_prompting = "*CANCEL*";
@@ -204,7 +211,7 @@ function prompt_for_password_criteria() {
   user_response = "";
   //
   if ((should_re_start_prompting != "*CANCEL*") && (should_re_start_prompting == false)) {
-    user_response = prompt("Do you want for lowercase letters to be used in your password (Y/Yes or N/No?");
+    user_response = prompt("Do you want for lowercase letters to be used in your password (Y/Yes or N/No)?");
     // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
     if (user_response == null) {  // The user selected the Cancel button to exit the application.
       should_re_start_prompting = "*CANCEL*";
@@ -228,7 +235,7 @@ function prompt_for_password_criteria() {
   //
   user_response = "";
   if ((should_re_start_prompting != "*CANCEL*") && (should_re_start_prompting == false)) {
-    user_response = prompt("Do you want for uppercase letters to be used in your password (Y/Yes or N/No?");
+    user_response = prompt("Do you want for uppercase letters to be used in your password (Y/Yes or N/No)?");
     // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
     if (user_response == null) {  // The user selected the Cancel button to exit the application.
       should_re_start_prompting = "*CANCEL*";
@@ -252,7 +259,7 @@ function prompt_for_password_criteria() {
   //
   user_response = "";
   if ((should_re_start_prompting != "*CANCEL*") && (should_re_start_prompting == false)) {
-    user_response = prompt("Do you want for special characters to be used in your password (Y/Yes or N/No?");
+    user_response = prompt("Do you want for special characters to be used in your password (Y/Yes or N/No)?");
     // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
     if (user_response == null) {  // The user selected the Cancel button to exit the application.
       should_re_start_prompting = "*CANCEL*";
