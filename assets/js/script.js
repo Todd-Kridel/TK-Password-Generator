@@ -166,7 +166,7 @@ function prompt_for_password_criteria() {
   //
   user_response = prompt("What character length (8 to 128) do you want for your password?");
   // VALIDATE THE INPUT; EXIT AND RE-START IF NOT VALID
-
+  //
   user_response_int = parseInt(user_response);
   if (user_response == null) {  // The user selected the Cancel button to exit the application.
     should_re_start_prompting = "*CANCEL*";
